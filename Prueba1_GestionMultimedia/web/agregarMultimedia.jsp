@@ -49,7 +49,6 @@
                 <div class="card shadow-lg p-4 rounded" style="max-width: 500px; width: 100%;">
                     <h4 class="text-center mb-3"><b>Agregar Multimedia</b><i class="fas fa-save ms-2"></i></h4>
                     <form action="guardarMultimedia.jsp">
-
                         <div class="form-group">
                             <label class="form-label">Título</label>
                             <input type="text" class="form-control" name="txtTitulo" placeholder="Ingresa el título" required>
