@@ -77,4 +77,65 @@ public class DbHelper {
         }
         return null;
     }
+    
+    public ResultSet getMultimedias(String tipo) throws SQLException {
+        try {
+            PreparedStatement predStatement = conn.prepareStatement("SELECT * FROM multimedia WHERE tipo=?;");
+            predStatement.setString(1, tipo);
+            ResultSet resultset = predStatement.executeQuery();
+            return resultset;
+        } catch (SQLException ex) {
+            //Logger.getLogger(databaseHelper.class.getName()).log(Level.ERROR, null, ex);
+        }
+        return null;
+    }
+    
+    public ResultSet getMultimedia(int id) throws SQLException {
+        try {
+            PreparedStatement predStatement = conn.prepareStatement("SELECT * FROM multimedia WHERE id=?;");
+            predStatement.setInt(1, id);
+            ResultSet resultset = predStatement.executeQuery();
+            return resultset;
+        } catch (SQLException ex) {
+            //Logger.getLogger(databaseHelper.class.getName()).log(Level.ERROR, null, ex);
+        }
+        return null;
+    }
+    
+    public boolean actualizarMultimedia(Multimedia md) throws SQLException {
+        try {
+            PreparedStatement predStatement
+                    = conn.prepareStatement("UPDATE multimedia SET titulo = ?, descripcion = ?, url = ?, tipo = ? WHERE id = ?;");
+
+            predStatement.setString(1, md.getTitulo());
+            predStatement.setString(2, md.getDescripcion());
+            predStatement.setString(3, md.getUrl());
+            predStatement.setString(4, md.getTipo());
+            predStatement.setInt(5, md.getId());
+
+            predStatement.executeUpdate();
+
+            return true;
+
+        } catch (SQLException ex) {
+            //Logger.getLogger(databaseHelper.class.getName()).log(Level.ERROR, null, ex);
+            return false;
+        }
+    }
+    
+    public boolean eliminarMultimedia(int id) throws SQLException {
+        try {
+            PreparedStatement predStatement
+                    = conn.prepareStatement("DELETE FROM multimedia WHERE id = ?;");
+
+            predStatement.setInt(1, id);
+            predStatement.executeUpdate();
+
+            return true;
+
+        } catch (SQLException ex) {
+            //Logger.getLogger(databaseHelper.class.getName()).log(Level.ERROR, null, ex);
+            return false;
+        }
+    }
 }

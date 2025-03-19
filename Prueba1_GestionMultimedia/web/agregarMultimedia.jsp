@@ -38,7 +38,7 @@
                         <a class="nav-link active" href="agregarMultimedia.jsp"><b>Agregar Multimedia</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="verMultimedia.jsp"><b>Ver Multimedia</b></a>
+                        <a class="nav-link" href="verMultimedia.jsp?tipo=todo"><b>Ver Multimedia</b></a>
                 </ul>
             </div>
         </nav>
@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">URL</label>
+                            <label class="form-label">URL (Vinculo para imagenes)</label>
                             <input type="text" class="form-control" name="txtURL" placeholder="Ingresa la URL del archivo" required>
                         </div>
 

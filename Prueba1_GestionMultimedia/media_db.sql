@@ -7,6 +7,3 @@ create table multimedia(
     url varchar(500),
     tipo varchar(50)
 );
-
-select * from multimedia;
-delete from multimedia where id =5;

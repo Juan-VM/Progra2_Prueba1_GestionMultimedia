@@ -17,7 +17,14 @@
     <body>
         <%
             DbHelper dbh = new DbHelper();
-            ResultSet rs = dbh.getMultimedias();
+            String tipo = request.getParameter("tipo");
+            ResultSet rs;
+            if (tipo.equals("todo") || tipo == null) {
+                rs = dbh.getMultimedias();
+            } else {
+                rs = dbh.getMultimedias(tipo);
+            }
+
             ArrayList<Multimedia> multimedias = new ArrayList<Multimedia>();
 
             while (rs.next()) {
@@ -46,38 +53,50 @@
                         <a class="nav-link" href="agregarMultimedia.jsp"><b>Agregar Multimedia</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="verMultimedia.jsp"><b>Ver Multimedia</b></a>
+                        <a class="nav-link active" href="verMultimedia.jsp?tipo=todo"><b>Ver Multimedia</b></a>
                 </ul>
             </div>
         </nav>
 
+        <div class="btn-container">
+            <a href="verMultimedia.jsp?tipo=todo" class="btn-custom">Todo</a>
+            <a href="verMultimedia.jsp?tipo=Imagen" class="btn-custom">Imagenes</a>
+            <a href="verMultimedia.jsp?tipo=Video" class="btn-custom">Videos</a>
+            <a href="verMultimedia.jsp?tipo=Audio" class="btn-custom">Audios</a>
+        </div>
+
         <div class="container mt-5">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center">
+
                 <%
+                    if (multimedias.size() == 0) {
+                %>
+                <h1 style="color: black; text-align: center;">No hay multimedias agregados</h1>
+                <%}
                     for (Multimedia md : multimedias) {
                 %>
                 <div class="col mb-4">
                     <div class="card">
-                        <% if(md.getTipo().equals("Imagen")) { %>
-                            <img src="<%= md.getUrl() %>" class="card-img-top" alt="<%= md.getTitulo() %>">
-                        <% } else if(md.getTipo().equals("Video")) { %>
-                            <video controls class="card-img-top">
-                                <source src="<%= md.getUrl() %>" type="video/mp4">
-                            </video>
-                        <% } else { %>
-                            <audio controls class="card-img-top">
-                                <source src="<%= md.getUrl() %>" type="audio/mp3">
-                            </audio>
-                        <% } %>
+                        <% if (md.getTipo().equals("Imagen")) {%>
+                        <img src="<%= md.getUrl()%>" class="card-img-top" alt="<%= md.getTitulo()%>">
+                        <% } else if (md.getTipo().equals("Video")) {%>
+                        <video controls class="card-img-top">
+                            <source src="<%= md.getUrl()%>" type="video/mp4">
+                        </video>
+                        <% } else {%>
+                        <audio controls class="card-img-top">
+                            <source src="<%= md.getUrl()%>" type="audio/mp3">
+                        </audio>
+                        <% }%>
 
                         <div class="card-body">
-                            <h5 class="card-title"><%= md.getTitulo() %></h5>
-                            <p class="card-text"><%= md.getDescripcion() %></p>
+                            <h5 class="card-title"><%= md.getTitulo()%></h5>
+                            <p class="card-text"><%= md.getDescripcion()%></p>
 
                             <div class="btn-container">
-                                <a href="modificarMultimedia?id=<%= md.getId() %>" class="btn-custom">Modificar
+                                <a href="modificarMultimedia.jsp?id=<%=md.getId()%>" class="btn-custom">Modificar
                                 </a>
-                                <a href="<%= md.getUrl() %>" class="btn-custom" target="_blank">Ver en navegador
+                                <a href="<%= md.getUrl()%>" class="btn-custom" target="_blank">Ver en navegador
                                 </a>
                             </div>
                         </div>
