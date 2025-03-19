@@ -1,0 +1,76 @@
+
+.container {
+    margin-top: 50px;
+}
+
+
+.form-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control, .form-select {
+    padding-left: 10px;
+    text-align: left;
+}
+
+
+.form-label {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: black;  /* Aquí cambias el color del texto de los labels a negro */
+}
+
+
+h4 {
+    font-size: 1.8rem;
+    color: #343a40;
+}
+
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.card-body {
+    text-align: center;
+}
+
+
+.btn-custom {
+    background-color: #343a40;
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.btn-custom:hover {
+    background-color: #495057;
+}
+
+
+.form-control::placeholder, .form-select::placeholder {
+    text-align: left;
+    color: #6c757d;
+}
+
+.navbar-nav .nav-item .nav-link.active {
+    color: gray !important;  
+    background-color: transparent; 
+}
+
+.navbar-nav .nav-item .nav-link.active:hover {
+    color: gray; 
+}
+

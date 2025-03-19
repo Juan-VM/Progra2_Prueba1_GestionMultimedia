@@ -1,0 +1,48 @@
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+.btn {
+    font-weight: bold;
+    color: #343a40;
+    border: 1px solid #343a40;
+}
+
+.btn:hover {
+    background-color: #343a40;
+    color: white;
+}
+
+
+.success-card {
+    border-left: 5px solid #343a40;
+    background-color: #ffffff;
+}
+
+.error-card {
+    border-left: 5px solid #343a40;
+    background-color: #ffffff;
+}
+
+.container {
+    margin-top: 50px;
+}
